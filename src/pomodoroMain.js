@@ -5,8 +5,9 @@ const PomodoroMain = ({ timerValue }) => {
   const [seconds, setSeconds] = useState(parseInt(0));
   const [timerState, setTimerState] = useState(false);
   const [timerReset, setTimerReset] = useState(false);
+  const [timerList, setTimerList] = useState("focus");
+  const [pomodoroTerms, setPomodoroTerms] = useState(0);
 
-  console.log(timerValue);
   const handleTimerStart = () => {
     setTimerReset(false);
     setTimerState(true);
@@ -32,7 +33,20 @@ const PomodoroMain = ({ timerValue }) => {
           }
           if (parseInt(seconds) === 0) {
             if (parseInt(minutes) === 0) {
-              clearInterval(countdown);
+              if (timerList == "focus") {
+                if (pomodoroTerms < timerValue.sections) {
+                  setPomodoroTerms(pomodoroTerms + 1);
+                }
+                setMinutes(parseInt(timerValue.shortbreak));
+                setSeconds(parseInt(0));
+                handleTimerStop();
+                setTimerList("short");
+              } else {
+                setMinutes(parseInt(timerValue.focusetime));
+                setSeconds(parseInt(0));
+                handleTimerStop();
+                setTimerList("focus");
+              }
             } else {
               setMinutes(parseInt(minutes) - 1);
               setSeconds(59);
@@ -42,7 +56,7 @@ const PomodoroMain = ({ timerValue }) => {
           clearInterval(countdown);
         }
       }
-    }, 1000);
+    }, 100);
     return () => clearInterval(countdown);
   }, [minutes, seconds, timerState, timerReset]);
 
@@ -56,6 +70,7 @@ const PomodoroMain = ({ timerValue }) => {
         {minutes < 10 ? `0${minutes}` : { minutes }}:
         {seconds < 10 ? `0${seconds}` : seconds}
       </div>
+      <div>{pomodoroTerms}</div>
     </div>
   );
 };

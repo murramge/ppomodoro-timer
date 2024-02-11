@@ -4,7 +4,7 @@ import PomodoroMain from "./pomodoroMain";
 function App() {
   const [initialtimer, setinitalTimer] = useState({
     focusetime: 1,
-    shortbreak: 5,
+    shortbreak: 2,
     longbreak: 15,
     sections: 4,
   });

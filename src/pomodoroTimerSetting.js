@@ -10,7 +10,7 @@ const PomodoroTimerSettings = ({ initialtimer, setinitalTimer }) => {
     setinitalTimer({
       focusetime: Number(focuseTimer),
       shortbreak: Number(shortBreak),
-      longbreak: Number(longBreak),
+
       sections: Number(sectionsTerms),
     });
   };
@@ -28,11 +28,6 @@ const PomodoroTimerSettings = ({ initialtimer, setinitalTimer }) => {
         <option value={5}>5 min</option>
         <option value={10}>10 min</option>
         <option value={15}>35 min</option>
-      </select>
-      <select name="longbreak" onChange={(e) => setLongBreak(e.target.value)}>
-        <option value={20}>20 min</option>
-        <option value={25}>25 min</option>
-        <option value={30}>30 min</option>
       </select>
       <select
         name="sections"
