@@ -3,9 +3,8 @@ import PomodoroTimerSettings from "./pomodoroTimerSetting";
 import PomodoroMain from "./pomodoroMain";
 function App() {
   const [initialtimer, setinitalTimer] = useState({
-    focusetime: 1,
-    shortbreak: 2,
-    longbreak: 15,
+    focusetime: 20,
+    shortbreak: 5,
     sections: 4,
   });
 

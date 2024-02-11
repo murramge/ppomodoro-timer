@@ -3,14 +3,12 @@ import React, { useState } from "react";
 const PomodoroTimerSettings = ({ initialtimer, setinitalTimer }) => {
   const [focuseTimer, setFocuseTimer] = useState(initialtimer.focusetime);
   const [shortBreak, setShortBreak] = useState(initialtimer.shortbreak);
-  const [longBreak, setLongBreak] = useState(initialtimer.longbreak);
   const [sectionsTerms, setSectionsTerms] = useState(initialtimer.sections);
 
   const handleTimerSave = () => {
     setinitalTimer({
       focusetime: Number(focuseTimer),
       shortbreak: Number(shortBreak),
-
       sections: Number(sectionsTerms),
     });
   };
