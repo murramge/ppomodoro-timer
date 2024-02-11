@@ -36,11 +36,10 @@ const PomodoroTimerSettings = ({ initialtimer, setinitalTimer }) => {
       </select>
       <select
         name="sections"
+        defaultValue={4}
         onChange={(e) => setSectionsTerms(e.target.value)}>
         <option value={3}>3 term</option>
-        <option value={4} selected>
-          4 term
-        </option>
+        <option value={4}>4 term</option>
         <option value={5}>5 term</option>
         <option value={6}>6 term</option>
       </select>
