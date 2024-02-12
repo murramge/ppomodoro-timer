@@ -1,13 +1,17 @@
 {
   "files": {
-    "main.css": "/ppomodoro-timer/static/css/main.40a4f811.css",
-    "main.js": "/ppomodoro-timer/static/js/main.1ee53731.js",
+    "main.css": "/ppomodoro-timer/static/css/main.4655e126.css",
+    "main.js": "/ppomodoro-timer/static/js/main.67e648cc.js",
+    "static/js/508.033db6a9.chunk.js": "/ppomodoro-timer/static/js/508.033db6a9.chunk.js",
+    "static/media/break.mp3": "/ppomodoro-timer/static/media/break.d47b09e66c5d3eab6ce3.mp3",
+    "static/media/focus.mp3": "/ppomodoro-timer/static/media/focus.6fc01ba08690d2f198f9.mp3",
     "index.html": "/ppomodoro-timer/index.html",
-    "main.40a4f811.css.map": "/ppomodoro-timer/static/css/main.40a4f811.css.map",
-    "main.1ee53731.js.map": "/ppomodoro-timer/static/js/main.1ee53731.js.map"
+    "main.4655e126.css.map": "/ppomodoro-timer/static/css/main.4655e126.css.map",
+    "main.67e648cc.js.map": "/ppomodoro-timer/static/js/main.67e648cc.js.map",
+    "508.033db6a9.chunk.js.map": "/ppomodoro-timer/static/js/508.033db6a9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.40a4f811.css",
-    "static/js/main.1ee53731.js"
+    "static/css/main.4655e126.css",
+    "static/js/main.67e648cc.js"
   ]
 }
