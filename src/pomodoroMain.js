@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import "./pomodoroMain.css";
 const PomodoroMain = ({ timerValue }) => {
   const [minutes, setMinutes] = useState(parseInt(timerValue.focusetime));
   const [seconds, setSeconds] = useState(parseInt(0));
@@ -8,7 +8,7 @@ const PomodoroMain = ({ timerValue }) => {
   const [timerList, setTimerList] = useState("focus");
   const [pomodoroTerms, setPomodoroTerms] = useState(0);
   const timeminute = parseInt(timerValue.focusetime);
-
+  const timerterm = parseInt(timerValue.sections);
   const handleTimerStart = () => {
     setTimerReset(false);
     setTimerState(true);
@@ -32,7 +32,7 @@ const PomodoroMain = ({ timerValue }) => {
 
   useEffect(() => {
     setMinutes(timeminute);
-  }, [timeminute]);
+  }, [timerValue]);
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -62,26 +62,42 @@ const PomodoroMain = ({ timerValue }) => {
           clearInterval(countdown);
         }
       }
-    }, 100);
+    }, 10);
     return () => clearInterval(countdown);
   }, [minutes, seconds, timerState, timerReset, timerValue]);
 
   return (
-    <div>
-      <img
-        src="./timer.png"
-        width={20}
-        height={20}
-        onClick={(e) => console.log(e)}></img>
-      <h1>Pomodoro Timer</h1>
-      <button onClick={handleTimerStart}>start</button>
-      <button onClick={handleTimerStop}>stop</button>
-      <button onClick={handleTimerReset}>reset</button>
-      <div>
-        {minutes < 10 ? `0${minutes}` : minutes}:
-        {seconds < 10 ? `0${seconds}` : seconds}
+    <div className="pomodoroMain">
+      <div className="pomodoroTimer">
+        <div className="pomodoroTimerText">
+          <div className="pomodoroTimes">
+            <p>
+              {minutes < 10 ? `0${minutes}` : minutes}:
+              {seconds < 10 ? `0${seconds}` : seconds}
+            </p>
+            <div>
+              <img
+                src="./play-48.png"
+                width={20}
+                height={20}
+                onClick={handleTimerStart}></img>
+              <img
+                src="./pause-48.png"
+                width={20}
+                height={20}
+                onClick={handleTimerStop}></img>
+              <img
+                src="./recurring-appointment-48.png"
+                width={20}
+                height={20}
+                onClick={handleTimerReset}></img>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>{pomodoroTerms}</div>
+      <div>
+        {pomodoroTerms} / {timerterm}
+      </div>
     </div>
   );
 };

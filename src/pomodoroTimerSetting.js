@@ -14,7 +14,6 @@ const PomodoroTimerSettings = ({ initialtimer, setinitalTimer }) => {
   };
   return (
     <>
-      <header>Timer Setting</header>
       <select
         name="focusetimer"
         onChange={(e) => setFocuseTimer(e.target.value)}>
