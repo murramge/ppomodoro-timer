@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
+import useSound from "use-sound";
 import "./pomodoroMain.css";
+import playIcon from "./img/play.png";
+import pauseIcon from "./img/pause.png";
+import resetIcon from "./img/reset.png";
+import focusSound from "./alarm/focus.mp3";
+import breakSound from "./alarm/break.mp3";
+
 const PomodoroMain = ({ timerValue }) => {
   const [minutes, setMinutes] = useState(parseInt(timerValue.focusetime));
   const [seconds, setSeconds] = useState(parseInt(0));
@@ -8,7 +15,13 @@ const PomodoroMain = ({ timerValue }) => {
   const [timerList, setTimerList] = useState("focus");
   const [pomodoroTerms, setPomodoroTerms] = useState(0);
   const timeminute = parseInt(timerValue.focusetime);
-  const timerterm = parseInt(timerValue.sections);
+  const [termArray, setTermArray] = useState(
+    new Array(timerValue.sections).fill("○")
+  );
+
+  const [soundPlay] = useSound(focusSound);
+  const [breakSoundPlay] = useSound(breakSound);
+
   const handleTimerStart = () => {
     setTimerReset(false);
     setTimerState(true);
@@ -19,6 +32,7 @@ const PomodoroMain = ({ timerValue }) => {
   };
   const handleTimerReset = () => {
     setTimerReset(true);
+    setTimerList("focus");
   };
   const handleTimerList = (minutes, timerlist) => {
     handleTimerSet(minutes, 0);
@@ -32,6 +46,8 @@ const PomodoroMain = ({ timerValue }) => {
 
   useEffect(() => {
     setMinutes(timeminute);
+    setSeconds(0);
+    setTermArray(new Array(timerValue.sections).fill("○"));
   }, [timerValue]);
 
   useEffect(() => {
@@ -47,11 +63,15 @@ const PomodoroMain = ({ timerValue }) => {
           if (parseInt(seconds) === 0) {
             if (parseInt(minutes) === 0) {
               if (timerList == "focus") {
+                soundPlay();
                 if (pomodoroTerms < timerValue.sections) {
                   setPomodoroTerms(pomodoroTerms + 1);
+                  termArray[pomodoroTerms] = "●";
+                  setTermArray(termArray);
                 }
                 handleTimerList(parseInt(timerValue.shortbreak), "short");
               } else {
+                breakSoundPlay();
                 handleTimerList(parseInt(timerValue.focusetime), "focus");
               }
             } else {
@@ -62,7 +82,7 @@ const PomodoroMain = ({ timerValue }) => {
           clearInterval(countdown);
         }
       }
-    }, 10);
+    }, 1000);
     return () => clearInterval(countdown);
   }, [minutes, seconds, timerState, timerReset, timerValue]);
 
@@ -77,17 +97,18 @@ const PomodoroMain = ({ timerValue }) => {
             </p>
             <div>
               <img
-                src="./play-48.png"
+                src={playIcon}
+                alt="play"
                 width={20}
                 height={20}
                 onClick={handleTimerStart}></img>
               <img
-                src="./pause-48.png"
+                src={pauseIcon}
                 width={20}
                 height={20}
                 onClick={handleTimerStop}></img>
               <img
-                src="./recurring-appointment-48.png"
+                src={resetIcon}
                 width={20}
                 height={20}
                 onClick={handleTimerReset}></img>
@@ -95,8 +116,10 @@ const PomodoroMain = ({ timerValue }) => {
           </div>
         </div>
       </div>
-      <div>
-        {pomodoroTerms} / {timerterm}
+      <div className="termList">
+        {termArray.map((t) => (
+          <span>{t}</span>
+        ))}
       </div>
     </div>
   );

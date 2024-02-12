@@ -1,0 +1,32 @@
+.setting {
+  display: flex;
+  margin-left: 30px;
+}
+.selectlist {
+  padding-left: 5px;
+  margin-left: 3px;
+  margin-right: 3px;
+  text-align: center;
+  background-color: white;
+  border-color: white;
+  border-width: 1px;
+  color: black;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+.TimerSetting p {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.saveButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 15px;
+  margin: 10px;
+  border-width: 0;
+  background-color: #ffbf00;
+}

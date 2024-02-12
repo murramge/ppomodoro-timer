@@ -5,7 +5,10 @@ body {
 }
 .pomodoroTimerSet p {
   padding: 9px;
-  margin: 20px;
+  margin: 80px;
+  margin-bottom: 0px;
+  margin-left: 100px;
+  margin-top: 0px;
   border-radius: 10px;
   background-color: #4d5061;
   text-align: center;
@@ -14,6 +17,7 @@ body {
 .pomodoroMainText {
   text-align: center;
   font-weight: 700;
+  font-size: 25px;
 }
 .pomodoroTimerSetList {
   display: flex;

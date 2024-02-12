@@ -12,6 +12,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 50px;
+  padding-bottom: 25px;
 }
 
 .pomodoroTimer p {
@@ -32,4 +33,11 @@ body {
 
 .pomodoroTimes {
   padding-top: 20%;
+}
+
+.termList span {
+  font-weight: 900;
+  font-size: 13px;
+  padding-left: 4px;
+  color: #bdbdbd;
 }

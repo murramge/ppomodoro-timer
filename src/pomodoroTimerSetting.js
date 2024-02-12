@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./pomodoroTimerSetting.css";
 
 const PomodoroTimerSettings = ({ initialtimer, setinitalTimer }) => {
   const [focuseTimer, setFocuseTimer] = useState(initialtimer.focusetime);
@@ -13,31 +14,46 @@ const PomodoroTimerSettings = ({ initialtimer, setinitalTimer }) => {
     });
   };
   return (
-    <>
-      <select
-        name="focusetimer"
-        onChange={(e) => setFocuseTimer(e.target.value)}>
-        <option value={20}>20 min</option>
-        <option value={25}>25 min</option>
-        <option value={30}>30 min</option>
-      </select>
-      <select name="shortbreak" onChange={(e) => setShortBreak(e.target.value)}>
-        <option value={5}>5 min</option>
-        <option value={10}>10 min</option>
-        <option value={15}>35 min</option>
-      </select>
-      <select
-        name="sections"
-        defaultValue={4}
-        onChange={(e) => setSectionsTerms(e.target.value)}>
-        <option value={3}>3 term</option>
-        <option value={4}>4 term</option>
-        <option value={5}>5 term</option>
-        <option value={6}>6 term</option>
-      </select>
-
-      <button onClick={handleTimerSave}>save</button>
-    </>
+    <div className="setting">
+      <div className="TimerSetting">
+        <p>focus time</p>
+        <select
+          name="focusetimer"
+          className="selectlist"
+          onChange={(e) => setFocuseTimer(e.target.value)}>
+          <option value={20}>20 min</option>
+          <option value={25}>25 min</option>
+          <option value={30}>30 min</option>
+        </select>
+      </div>
+      <div className="TimerSetting">
+        <p>break time</p>
+        <select
+          name="shortbreak"
+          className="selectlist"
+          onChange={(e) => setShortBreak(e.target.value)}>
+          <option value={5}>5 min</option>
+          <option value={10}>10 min</option>
+          <option value={15}>15 min</option>
+        </select>
+      </div>
+      <div className="TimerSetting">
+        <p>term</p>
+        <select
+          name="sections"
+          className="selectlist"
+          defaultValue={4}
+          onChange={(e) => setSectionsTerms(e.target.value)}>
+          <option value={3}>3 term</option>
+          <option value={4}>4 term</option>
+          <option value={5}>5 term</option>
+          <option value={6}>6 term</option>
+        </select>
+      </div>
+      <button className="saveButton" onClick={handleTimerSave}>
+        save
+      </button>
+    </div>
   );
 };
 
